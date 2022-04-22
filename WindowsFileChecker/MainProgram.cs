@@ -15,23 +15,18 @@ namespace WindowsFileChecker
 
 
             WhConfig whConfig = new();
-
-                SqlScanner scanner = new(whConfig);
-                OrderList orderList = scanner.GenerateOrderList();
-
-
-
+            LoadConfigHelper.LoadConfigData(ref whConfig);
+            SqlScanner scanner = new(whConfig);
+            OrderList orderList = scanner.GenerateOrderList();
 
             WhFileScanner whFileScanner = new();
-                ProductionFileList whFileList = whFileScanner.GenerateList(whConfig.GetWhPath());
+            ProductionFileList whFileList = whFileScanner.GenerateList(whConfig.GetWhPath());
 
+            UltimaFileScanner ultimaWhScanner = new();
+            ProductionFileList ultimaFileList = ultimaWhScanner.GenerateList(whConfig.GetUltimaPath());
 
-                UltimaFileScanner ultimaWhScanner = new();
-                ProductionFileList ultimaFileList = ultimaWhScanner.GenerateList(whConfig.GetUltimaPath());
-
-
-                ListComparer listComparer = new(orderList, whFileList, ultimaFileList);
-                OrderList result;
+            ListComparer listComparer = new(orderList, whFileList, ultimaFileList);
+            OrderList result;
             
             return result = listComparer.Compare();
 

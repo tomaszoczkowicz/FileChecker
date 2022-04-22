@@ -47,7 +47,7 @@
                     <TextBox x:Name="txtUltimaDir" Grid.Row="1" Grid.Column="1" Margin="5"/>
             </Grid>
         </GroupBox>
-            <Button x:Name="btnAccept" Content ="Zapisz zmiany" Width="100" Margin="10,10,20,10" HorizontalAlignment="Right"/>
+            <Button x:Name="btnAccept" Content ="Zapisz zmiany" Width="100" Margin="10,10,20,10" HorizontalAlignment="Right" Click="btnAccept_Click"/>
         </StackPanel>
     </Grid>
 </Window>

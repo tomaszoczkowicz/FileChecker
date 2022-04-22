@@ -31,13 +31,20 @@ namespace WindowsFileChecker
         private void btnConnect_Click(object sender, RoutedEventArgs e)
         {
             list = new ObservableCollection<Order>();
-            var myList = MainProgram.StartProgram();
-            lblInfo.Content = "Połączono z bazą, naciśnij by odświeżyć";
-            list = myList.Orders;
-            gridComparedOrderList.ItemsSource = list;
-            btnConnect.Content = "Odśwież";
-            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(gridComparedOrderList.ItemsSource);
-            view.Filter = FiltrUzytkownika;
+            try
+            {
+                var myList = MainProgram.StartProgram();
+                lblInfo.Content = "Połączono z bazą, naciśnij by odświeżyć";
+                list = myList.Orders;
+                gridComparedOrderList.ItemsSource = list;
+                btnConnect.Content = "Odśwież";
+                CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(gridComparedOrderList.ItemsSource);
+                view.Filter = FiltrUzytkownika;
+            }
+            catch
+            {
+                lblInfo.Content = "Błąd! Nie udało się połączyć z bazą";
+            }  
         }
         public void StatusUpdate(string text)
         {
@@ -57,7 +64,7 @@ namespace WindowsFileChecker
 
         private void menuItemHelpAbout_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Aplikacja do podglądu stanu plików WH i Ultima dla nadchodzących zleceń.\nAutor - Tomasz Oczkowicz \n2022 v1.0", "O programie");
+            MessageBox.Show("Aplikacja do podglądu stanu plików WH i Ultima dla nadchodzących zleceń.\nAutor - Tomasz Oczkowicz \n2022 v1.1", "O programie");
         }
 
         private void menuItemFileExit_Click(object sender, RoutedEventArgs e)

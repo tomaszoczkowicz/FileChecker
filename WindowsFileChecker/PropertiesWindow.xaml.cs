@@ -27,12 +27,28 @@ namespace WindowsFileChecker
         public void CreateBinding()
         {
             WhConfig whConfig = new WhConfig();
+            LoadConfigHelper.LoadConfigData(ref whConfig);
             txtBase.Text = whConfig.GetBase();
             txtServer.Text = whConfig.GetServer();
             txtLogin.Text = whConfig.GetUser();
             txtPass.Password = whConfig.GetPass();
             txtWhDir.Text = whConfig.GetWhPath();
             txtUltimaDir.Text = whConfig.GetUltimaPath();
+        }
+
+        private void btnAccept_Click(object sender, RoutedEventArgs e)
+        {
+            WhConfig whConfig = new WhConfig(txtServer.Text, txtBase.Text, txtPass.Password, txtLogin.Text, txtWhDir.Text, txtUltimaDir.Text);
+            try
+            {
+                SaveConfigHelper.SaveConfigData(whConfig);
+                MessageBox.Show("Dane zapisane prawidłowo","Zapis");
+            }
+            catch 
+            {
+                MessageBox.Show("Błąd zapisu - niepoprawne dane lub brak dostępu do scieżki","Zapis");
+            }
+            Close();
         }
     }
 }
