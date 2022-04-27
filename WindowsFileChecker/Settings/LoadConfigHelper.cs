@@ -12,6 +12,7 @@ namespace WindowsFileChecker
     {
         public static WhConfig LoadConfigData(ref WhConfig whConfig)
         {
+            
             var whConfigSerialized = File.ReadAllText(@".\Settings\Config.json");
             whConfig = JsonConvert.DeserializeObject<WhConfig>(whConfigSerialized);
             return whConfig;

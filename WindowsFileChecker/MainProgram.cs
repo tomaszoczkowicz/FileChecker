@@ -8,30 +8,30 @@ namespace WindowsFileChecker
 {
     public static class MainProgram
     {
-        
+        public delegate void UpdateStatus(string text);
 
-        public static OrderList StartProgram()
+        public static async Task<OrderList> StartProgram(UpdateStatus updateStatus)
         {
 
-
             WhConfig whConfig = new();
+            updateStatus("Ładowanie ustawień...");
             LoadConfigHelper.LoadConfigData(ref whConfig);
             SqlScanner scanner = new(whConfig);
-            OrderList orderList = scanner.GenerateOrderList();
+            updateStatus("Łączenie z bazą...");
+            OrderList orderList = await Task.Run(() => scanner.GenerateOrderList());
 
             WhFileScanner whFileScanner = new();
-            ProductionFileList whFileList = whFileScanner.GenerateList(whConfig.GetWhPath());
+            updateStatus("Skanowanie plików WH...");
+            ProductionFileList whFileList = await Task.Run(() => whFileScanner.GenerateList(whConfig.GetWhPath()));
 
             UltimaFileScanner ultimaWhScanner = new();
-            ProductionFileList ultimaFileList = ultimaWhScanner.GenerateList(whConfig.GetUltimaPath());
+            updateStatus("Skanowanie plików Ultima...");
+            ProductionFileList ultimaFileList = await Task.Run(() => ultimaWhScanner.GenerateList(whConfig.GetUltimaPath()));
 
             ListComparer listComparer = new(orderList, whFileList, ultimaFileList);
             OrderList result;
-            
-            return result = listComparer.Compare();
-
-           
-
+            updateStatus("Porównanie danych...");
+            return result = await Task.Run(() => listComparer.Compare());        
 
         }
         

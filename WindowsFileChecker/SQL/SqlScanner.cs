@@ -9,7 +9,7 @@ namespace WindowsFileChecker
 {
     public class SqlScanner
     {
-        private WhConfig _whConfig;
+        private readonly WhConfig _whConfig;
         readonly string sql = "Select distinct top 100 o.indeks, o.zlecenie_t, o.stan, o.realizacja , case when o.dtypy like '' then 'brak konstrukcji' else o.dtypy end "
                             + "from oferty as o join rep_czesci as c on o.indeks = c.srcdoc "
                             + "where o.zlecenie_t not like '' and o.zlecenie_t like 'ZLC/A%' and SUBSTRING(o.zlecenie_t,17,2) not like 'V0' and "
@@ -17,6 +17,7 @@ namespace WindowsFileChecker
                             + "c.nr_art like 'P-163%' or "
                             + "c.nr_art like 'GN%' or "
                             + "c.nr_art like 'UG%') "
+                            + "and c.nr_art not like 'GN070%' "
                             + "and o.stan like 'Produkcja%' and o.realizacja > GETDATE() order by o.realizacja";
         public SqlScanner(WhConfig whConfig)
         {

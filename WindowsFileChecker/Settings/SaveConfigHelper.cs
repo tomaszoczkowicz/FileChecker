@@ -13,7 +13,9 @@ namespace WindowsFileChecker
         public static void SaveConfigData(WhConfig whConfig)
         {
             var tempWhConfig = JsonConvert.SerializeObject(whConfig);
+  
             File.WriteAllText(@".\Settings\Config.json", tempWhConfig);
+            
         }
     }
 }
