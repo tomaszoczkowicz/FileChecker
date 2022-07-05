@@ -11,8 +11,8 @@ namespace ConsoleFileChecker
         //zrobić niestatyczną, która deserializuje dane z pliku .json
         private string dbserver = @"SERWER3\WHOKNA";
         private string dbname = "GLOWNA_NEW";
-        private string pass = "excel";
-        private string user = "excel2k18";
+        private string pass = "";
+        private string user = "";
         private string directoryWh = @"\\SERWER2\HalaPliki\Pliki_WH\";
         private string directoryUltima = @"\\Serwer2\HalaPliki\Pliki_ULTIMA\";
         private string connectionString ="";

@@ -9,13 +9,13 @@ namespace WindowsFileChecker
 {
     public class WhConfig 
     {
-
-        public string dbserver = @"SERWER3\WHOKNA";
-        public string dbname = "GLOWNA_NEW";
-        public string pass = "excel";
-        public string user = "excel2k18";
-        public string directoryWh = @"\\SERWER2\HalaPliki\Pliki_WH\";
-        public string directoryUltima = @"\\Serwer2\HalaPliki\Pliki_ULTIMA\";
+        //przerobić na prywatne
+        public string dbserver = @"";
+        public string dbname = "";
+        public string pass = "";
+        public string user = "";
+        public string directoryWh = @"";
+        public string directoryUltima = @"";
         public string connectionString ="";
 
         public WhConfig()

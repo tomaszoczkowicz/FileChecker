@@ -1,8 +1,8 @@
 {
   "dbserver": "SERWER3\\WHOKNA",
   "dbname": "GLOWNA_NEW",
-  "pass": "excel",
-  "user": "excel2k18",
+  "pass": "",
+  "user": "",
   "directoryWh": "\\\\SERWER2\\HalaPliki\\Pliki_WH\\",
   "directoryUltima": "\\\\Serwer2\\HalaPliki\\Pliki_ULTIMA\\",
   "connectionString": ""
