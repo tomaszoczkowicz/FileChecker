@@ -1,6 +1,6 @@
 # FileChecker
 
-App created for production management in OknoPlus.
+App created for production management in a window manufacturing company.
 
 ## Table of contents
 * [General info](#general-info)
